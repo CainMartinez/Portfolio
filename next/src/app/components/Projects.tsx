@@ -1,7 +1,6 @@
 'use client';
 
 import Image from 'next/image';
-import { useState } from 'react';
 import { FaGithub, FaCalendarAlt } from 'react-icons/fa';
 
 interface Project {
@@ -23,7 +22,7 @@ const projectImages = [
 ];
 
 export function Projects({ projects }: { projects: Project[] }) {
-  const [hoveredProject, setHoveredProject] = useState<number | null>(null);
+  // const [hoveredProject, setHoveredProject] = useState<number | null>(null);
 
   return (
     <section id="projects" className="py-20 bg-white">
@@ -45,8 +44,8 @@ export function Projects({ projects }: { projects: Project[] }) {
               <div 
                 key={project.name}
                 className="bg-white rounded-lg overflow-hidden shadow-lg transition-all duration-300 hover:shadow-xl transform hover:-translate-y-1"
-                onMouseEnter={() => setHoveredProject(index)}
-                onMouseLeave={() => setHoveredProject(null)}
+                // onMouseEnter={() => setHoveredProject(index)}
+                // onMouseLeave={() => setHoveredProject(null)}
               >
                 <div className="relative h-48 w-full overflow-hidden">
                   <Image
