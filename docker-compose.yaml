@@ -6,7 +6,7 @@ services:
     container_name: next_container
     restart: always
     env_file:
-      - .env
+      - ./next/.env
     expose:
       - "3000"
     networks:

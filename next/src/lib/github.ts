@@ -1,3 +1,4 @@
+// src/lib/github.ts
 import { GraphQLClient, gql } from 'graphql-request';
 
 const client = new GraphQLClient('https://api.github.com/graphql', {
@@ -9,6 +10,19 @@ export interface Project {
   description: string;
   url: string;
   updatedAt: string;
+}
+
+interface QueryResponse {
+  user: {
+    pinnedItems: {
+      nodes: Array<{
+        name: string;
+        description: string | null;
+        url: string;
+        updatedAt: string;
+      }>;
+    };
+  };
 }
 
 export async function fetchPinnedProjects(): Promise<Project[]> {
@@ -28,27 +42,17 @@ export async function fetchPinnedProjects(): Promise<Project[]> {
       }
     }
   `;
-  
-  interface QueryResponse {
-    user: {
-      pinnedItems: {
-        nodes: Array<{
-          name: string;
-          description: string;
-          url: string;
-          updatedAt: string;
-        }>;
-      };
-    };
-  }
-  
+
+  // El "!" fuerza a TS a tratar esto como string no-null. 
   const { user } = await client.request<QueryResponse>(query, {
-    login: process.env.GITHUB_USER,
+    login: process.env.GITHUB_USER!,
   });
-  return user.pinnedItems.nodes.map((r: any) => ({
-    name: r.name,
-    description: r.description,
-    url: r.url,
-    updatedAt: r.updatedAt,
+
+  return user.pinnedItems.nodes.map(node => ({
+    name:        node.name,
+    // Si description puede ser null, cámbialo a cadena vacía
+    description: node.description ?? '',
+    url:         node.url,
+    updatedAt:   node.updatedAt,
   }));
 }
