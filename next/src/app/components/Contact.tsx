@@ -10,8 +10,8 @@ export function Contact() {
     message: ''
   });
   
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitSuccess, setSubmitSuccess] = useState(false);
+  // const [isSubmitting, setIsSubmitting] = useState(false);
+  // const [submitSuccess, setSubmitSuccess] = useState(false);
   
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({

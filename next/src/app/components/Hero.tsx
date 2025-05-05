@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import { FaGithub, FaLinkedin } from 'react-icons/fa';
-import { MdEmail, MdPhone, MdLocationOn } from 'react-icons/md';
+import { MdEmail} from 'react-icons/md';
 
 export function Hero() {
   return (

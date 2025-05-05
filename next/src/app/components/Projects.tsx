@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 import { useState } from 'react';
-import { FaGithub, FaExternalLinkAlt, FaCalendarAlt } from 'react-icons/fa';
+import { FaGithub, FaCalendarAlt } from 'react-icons/fa';
 
 interface Project {
   name: string;
