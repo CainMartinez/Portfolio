@@ -73,18 +73,19 @@ export function Education() {
                   </div>
                   <div className="ml-6">
                     <div className="text-blue-300">
-                      <span className="text-pink-400">const</span> <span className="text-blue-300">institution</span> = <span className="text-green-300">{`"${edu.institution}"`}</span>;
+                      <span className="text-pink-400">const</span> <span className="text-blue-300">institution</span> = <span className="text-green-300">&#34;{edu.institution}&#34;</span>;
                     </div>
                     <div className="text-blue-300">
-                      <span className="text-pink-400">const</span> <span className="text-blue-300">period</span> = <span className="text-green-300">{`"${edu.period}"`}</span>;
+                      <span className="text-pink-400">const</span> <span className="text-blue-300">period</span> = <span className="text-green-300">&#34;{edu.period}&#34;</span>;
                     </div>
                     <div className="text-blue-300 mt-1">
                       <span className="text-pink-400">const</span> <span className="text-blue-300">skills</span> = [
-                      <span className="text-green-300">{` "${edu.skills.join('", "')}"`}</span>
+                      <span className="text-green-300"> &#34;{edu.skills.join('&#34;, &#34;')}&#34; </span>
                       ];
                     </div>
                     <div className="mt-1 text-gray-400">
-                      <span className="text-purple-400">{`// Formación ${index === 0 ? "en curso" : "completada con éxito"}`}</span>
+                      {/* Formación completada en curso o con éxito según corresponda */}
+                      <span className="text-purple-400">&#47;&#47; Formación {index === 0 ? "en curso" : "completada con éxito"}</span>
                     </div>
                   </div>
                 </div>
