@@ -46,13 +46,13 @@ export function Hero() {
             <div className="flex flex-col md:flex-row gap-4 mb-8 justify-center md:justify-start">
               <a 
                 href="#contact-info" 
-                className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-md font-medium transition duration-300 shadow-lg hover:shadow-xl hover:shadow-blue-600/20"
+                className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-md font-medium transition duration-300 shadow-lg hover:shadow-xl hover:shadow-blue-600/20 text-center"
               >
                 Contacto
               </a>
               <a 
                 href="#projects" 
-                className="border-2 border-white/70 hover:bg-white/10 hover:border-white px-6 py-3 rounded-md font-medium transition duration-300"
+                className="border-2 border-white/70 hover:bg-white/10 hover:border-white px-6 py-3 rounded-md font-medium transition duration-300 text-center"
               >
                 Ver proyectos
               </a>
@@ -60,7 +60,7 @@ export function Hero() {
                 href="/cv.pdf" 
                 target="_blank"
                 rel="noopener noreferrer"
-                className="border-2 border-blue-500/70 bg-blue-500/10 hover:bg-blue-500/20 hover:border-blue-400 text-blue-300 hover:text-blue-200 px-6 py-3 rounded-md font-medium transition duration-300 flex items-center gap-2"
+                className="border-2 border-blue-500/70 bg-blue-500/10 hover:bg-blue-500/20 hover:border-blue-400 text-blue-300 hover:text-blue-200 px-6 py-3 rounded-md font-medium transition duration-300 flex items-center justify-center gap-2"
               >
                 <FaFileDownload /> Descargar CV
               </a>

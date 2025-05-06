@@ -431,7 +431,7 @@ export function Skills() {
             {activeTech && (
               <div className="p-6 rounded-xl bg-gradient-to-br from-slate-600 to-slate-700 border border-slate-500 shadow-inner">
                 <div className="flex items-center mb-4">
-                  <div className="w-12 h-12 rounded-lg bg-slate-800 shadow-sm flex items-center justify-center mr-4">
+                  <div className="w-12 h-12 rounded-lg bg-white shadow-sm flex items-center justify-center mr-4">
                     <div className="text-3xl">
                       {activeTech.icon}
                     </div>

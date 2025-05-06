@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { FaBriefcase, FaCalendarAlt, FaMapMarkerAlt, FaChevronDown, FaChevronUp } from 'react-icons/fa';
 
 interface ExperienceItem {
@@ -12,12 +12,15 @@ interface ExperienceItem {
 }
 
 export function Experience() {
-  // Estados y funciones sin cambios
+  // Estados y funciones
   const [expandedItems, setExpandedItems] = useState<{[key: number]: boolean}>({
     0: true,
     1: false,
     2: false
   });
+  
+  // Referencias para los contenidos desplegables
+  const contentRefs = useRef<{[key: number]: HTMLDivElement | null}>({});
 
   const toggleExpand = (index: number) => {
     setExpandedItems(prev => ({
@@ -25,6 +28,7 @@ export function Experience() {
       [index]: !prev[index]
     }));
   };
+  
   const experiences: ExperienceItem[] = [
     {
       company: "Gestfy Soluciones, S.L.",
@@ -123,13 +127,27 @@ export function Experience() {
                   </div>
                 </div>
                 
-                <div className={`p-2 rounded-full ${expandedItems[index] ? "bg-blue-400/20" : "bg-gray-700"}`}>
-                  {expandedItems[index] ? <FaChevronUp className="text-blue-400" /> : <FaChevronDown className="text-gray-400" />}
+                <div className={`p-2 rounded-full transition-colors duration-300 ${
+                  expandedItems[index] ? "bg-blue-400/20" : "bg-gray-700"
+                }`}>
+                  {expandedItems[index] ? (
+                    <FaChevronUp className={`text-blue-400 transform transition-transform duration-300`} />
+                  ) : (
+                    <FaChevronDown className={`text-gray-400 transform transition-transform duration-300`} />
+                  )}
                 </div>
               </div>
               
-              {expandedItems[index] && (
-                <div className="px-6 pb-6 border-t border-slate-600 pt-4">
+              {/* Contenedor para la animación */}
+              <div 
+                className={`transition-all duration-500 ease-in-out overflow-hidden ${
+                  expandedItems[index] ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0'
+                }`}
+              >
+                <div 
+                  className="px-6 pb-6 border-t border-slate-600 pt-4"
+                  ref={el => { contentRefs.current[index] = el; }}
+                >
                   <div className="flex items-center gap-2 mb-3">
                     <span className="text-blue-400">&lt;</span>
                     <h5 className="font-semibold">Responsabilidades</h5>
@@ -144,7 +162,7 @@ export function Experience() {
                     ))}
                   </ul>
                 </div>
-              )}
+              </div>
             </div>
           ))}
         </div>

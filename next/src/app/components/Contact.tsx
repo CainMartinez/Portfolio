@@ -202,7 +202,7 @@ export function Contact() {
               
               {/* Redes sociales */}
               <div className="mt-8 pt-6 border-t border-slate-700">
-                <h4 className="font-medium text-lg mb-4">Conectemos</h4>
+                <h4 className="font-medium text-lg mb-4">Puedes seguirme en:</h4>
                 <div className="flex gap-4">
                   <a 
                     href="https://github.com/CainMartinez" 
