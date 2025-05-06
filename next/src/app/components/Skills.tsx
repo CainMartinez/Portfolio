@@ -70,6 +70,7 @@ export function Skills() {
       setIsDescriptionVisible(false);
     }
   }, [activeTech]);
+
   // Skill categories and technologies
    const categories: SkillCategory[] = [
     {
@@ -308,17 +309,37 @@ export function Skills() {
     },
   ];
   return (
-    <section id="skills" className="py-20 bg-slate-50">
+    <section id="skills" className="py-20 bg-slate-800 text-white">
       <div className="max-w-5xl mx-auto px-4">
-        <h2 className="text-3xl font-bold mb-2 text-center">Competencias en Desarrollo Web</h2>
-        <div className="w-20 h-1 bg-blue-500 mx-auto mb-12"></div>
+        {/* Encabezado con estilo mejorado */}
+        <div className="mb-12 text-center">
+          <div className="inline-block bg-blue-500/20 text-blue-300 px-3 py-1 rounded-full mb-3">
+            <div className="flex items-center gap-1.5">
+              <FaCode className="text-sm" />
+              <span className="text-sm font-medium">Mis herramientas</span>
+            </div>
+          </div>
+          
+          <h2 className="text-3xl font-bold mb-3">
+            <span className="text-blue-400">&lt;</span>
+            Competencias
+            <span className="text-blue-400">/&gt;</span>
+          </h2>
+          
+          <div className="w-20 h-1 bg-blue-400 mx-auto mb-6"></div>
+          
+          <p className="text-gray-300 max-w-2xl mx-auto text-lg">
+            Las tecnologías y herramientas que manejo para desarrollar soluciones de software eficientes.
+          </p>
+        </div>
+        <div className="w-20 h-1 bg-blue-400 mx-auto mb-12"></div>
 
         {/* Tabs Navigation - Mejorado para mejor responsividad */}
-        <div className="bg-white rounded-lg shadow-md p-3 mb-8">
+        <div className="bg-slate-700 rounded-lg shadow-md p-3 mb-8 border border-slate-600">
           {/* En dispositivos móviles, mostrar un dropdown en lugar de scroll horizontal */}
           <div className="block md:hidden mb-4">
             <select 
-              className="w-full p-3 border rounded-lg bg-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full p-3 border rounded-lg bg-slate-600 text-white border-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-500"
               value={activeCategory}
               onChange={(e) => setActiveCategory(Number(e.target.value))}
             >
@@ -338,7 +359,7 @@ export function Skills() {
                 className={`flex items-center justify-center px-4 py-3 rounded-lg font-medium transition-all duration-300 ${
                   activeCategory === index 
                     ? 'bg-blue-500 text-white shadow-md scale-105' 
-                    : 'bg-gray-50 text-slate-700 hover:bg-slate-100'
+                    : 'bg-slate-600 text-slate-200 hover:bg-slate-500'
                 }`}
                 onClick={() => setActiveCategory(index)}
               >
@@ -354,16 +375,16 @@ export function Skills() {
         </div>
 
         {/* Content Container */}
-        <div className="bg-white rounded-lg shadow-md p-8">
+        <div className="bg-slate-700 rounded-lg shadow-lg p-8 border border-slate-600">
           {/* Category Header with Animation */}
-          <div className="mb-8 border-b pb-4">
+          <div className="mb-8 border-b border-slate-600 pb-4">
             <h3 className="text-2xl font-bold flex items-center">
-              <span className="mr-3 text-blue-500">{categories[activeCategory].icon}</span>
-              <span className="bg-gradient-to-r from-blue-600 to-blue-400 bg-clip-text text-transparent">
+              <span className="mr-3 text-blue-400">{categories[activeCategory].icon}</span>
+              <span className="bg-gradient-to-r from-blue-400 to-blue-300 bg-clip-text text-transparent">
                 {categories[activeCategory].name}
               </span>
             </h3>
-            <p className="text-gray-600 mt-2">
+            <p className="text-slate-300 mt-2">
               Selecciona una tecnología para ver más detalles
             </p>
           </div>
@@ -375,8 +396,8 @@ export function Skills() {
                 key={idx}
                 className={`group relative p-4 md:p-5 rounded-xl transition-all duration-300 transform cursor-pointer ${
                   activeTech?.name === tech.name 
-                    ? 'bg-gradient-to-br from-blue-50 to-blue-100 shadow-md scale-[1.02] border-none'
-                    : 'bg-white border border-gray-100 hover:shadow-md hover:scale-[1.02]'
+                    ? 'bg-gradient-to-br from-slate-500 to-slate-600 shadow-md scale-[1.02] border-blue-400 border'
+                    : 'bg-slate-500 border border-slate-400 hover:shadow-md hover:scale-[1.02]'
                 }`}
                 onClick={() => setActiveTech(activeTech?.name === tech.name ? null : tech)}
               >
@@ -389,14 +410,14 @@ export function Skills() {
                   }`}>
                     {tech.icon}
                   </div>
-                  <h4 className="font-medium">{tech.name}</h4>
+                  <h4 className="font-medium text-white">{tech.name}</h4>
                   
                   {/* Animated underline on hover */}
-                  <div className="h-0.5 w-0 bg-blue-500 absolute -bottom-1 left-1/2 transform -translate-x-1/2 group-hover:w-1/2 transition-all duration-300"></div>
+                  <div className="h-0.5 w-0 bg-blue-400 absolute -bottom-1 left-1/2 transform -translate-x-1/2 group-hover:w-1/2 transition-all duration-300"></div>
                   
                   {/* Selected indicator */}
                   {activeTech?.name === tech.name && (
-                    <div className="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-1.5 h-1.5 rounded-full bg-blue-500"></div>
+                    <div className="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-1.5 h-1.5 rounded-full bg-blue-400"></div>
                   )}
                 </div>
               </div>
@@ -408,17 +429,17 @@ export function Skills() {
             isDescriptionVisible ? 'max-h-[400px] opacity-100' : 'max-h-0 opacity-0'
           }`}>
             {activeTech && (
-              <div className="p-6 rounded-xl bg-gradient-to-br from-blue-50 to-blue-100 border border-blue-200 shadow-inner">
+              <div className="p-6 rounded-xl bg-gradient-to-br from-slate-600 to-slate-700 border border-slate-500 shadow-inner">
                 <div className="flex items-center mb-4">
-                  <div className="w-12 h-12 rounded-lg bg-white shadow-sm flex items-center justify-center mr-4">
+                  <div className="w-12 h-12 rounded-lg bg-slate-800 shadow-sm flex items-center justify-center mr-4">
                     <div className="text-3xl">
                       {activeTech.icon}
                     </div>
                   </div>
-                  <h4 className="text-xl font-bold">{activeTech.name}</h4>
+                  <h4 className="text-xl font-bold text-white">{activeTech.name}</h4>
                 </div>
                 
-                <p className="text-gray-700 mb-5 leading-relaxed">{activeTech.description}</p>
+                <p className="text-slate-200 mb-5 leading-relaxed">{activeTech.description}</p>
                 
                 <a 
                   href={activeTech.url} 
