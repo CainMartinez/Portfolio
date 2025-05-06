@@ -182,7 +182,7 @@ export function Skills() {
           name: "MVC",
           icon: <FaCode className="text-xl text-gray-700" />,
           url: "https://developer.mozilla.org/es/docs/Glossary/MVC",
-          description: "Patrón de diseño usado para separar la lógica de la aplicación de la interfaz de usuario. Lo implementé en los primeros proyectos como en LivingMovility."
+          description: "Model View Controller: Patrón de diseño usado para separar la lógica de la aplicación de la interfaz de usuario. Lo implementé en los primeros proyectos como en LivingMovility."
         },
         {
           name: "Clean Code",
@@ -194,18 +194,18 @@ export function Skills() {
           name: "DDD",
           icon: <FaLayerGroup className="text-xl text-orange-600" />,
           url: "https://martinfowler.com/bliki/DomainDrivenDesign.html",
-          description: "Enfoque de desarrollo de software que conecta la implementación con un modelo de dominio evolutivo. "
+          description: "Domain Driven Design: Enfoque de desarrollo de software que conecta la implementación con un modelo de dominio evolutivo. "
         },
         {
           name: "CQRS",
           icon: <FaLayerGroup className="text-xl text-purple-700" />,
           url: "https://martinfowler.com/bliki/CQRS.html",
-          description: "Patrón que separa las operaciones de lectura de las operaciones de escritura."
+          description: "Command Query Responsability Segregation: Patrón que separa las operaciones de lectura de las operaciones de escritura."
         },
         {
           name: "SOLID",
           icon: <FaLayerGroup className="text-xl text-green-800" />,
-          url: "https://en.wikipedia.org/wiki/SOLID",
+          url: "https://www.digitalocean.com/community/conceptual-articles/s-o-l-i-d-the-first-five-principles-of-object-oriented-design",
           description: "Conjunto de principios de diseño de software para crear sistemas mantenibles y extensibles."
         }
       ]
@@ -230,13 +230,13 @@ export function Skills() {
           name: "Doctrine",
           icon: <FaCode className="text-xl text-blue-600" />,
           url: "https://www.doctrine-project.org/",
-          description: "Conjunto de bibliotecas PHP centradas en el almacenamiento de bases de datos y mapeo de objetos."
+          description: "ORM principal de Symfony que es un conjunto de bibliotecas PHP centradas en el almacenamiento de bases de datos y mapeo de objetos."
         },
         {
           name: "JPA",
           icon: <FaJava className="text-xl text-red-700" />,
           url: "https://www.oracle.com/java/technologies/persistence-jsp.html",
-          description: "API de persistencia de Java para mapeo objeto-relacional."
+          description: "ORM principal de Spring Boot, API de persistencia de Java para mapeo objeto-relacional, por lo que no es exclusivo de este framework."
         },
         {
           name: "Eloquent",
@@ -260,20 +260,14 @@ export function Skills() {
           name: "Kafka",
           icon: <SiApachekafka className="text-xl text-black" />,
           url: "https://kafka.apache.org/",
-          description: "Plataforma de transmisión de eventos distribuida de código abierto."
+          description: "Plataforma de transmisión de eventos distribuida de código abierto. Implementado durante las prácticas en Gestfy para mejorar los logs de ELK de forma asíncrona."
         }
       ]
     },
     {
-      name: "Otros",
-      icon: <FaDocker className="text-xl" />,
+      name: "Diseño",
+      icon: <SiCss3 className="text-xl" />,
       technologies: [
-        {
-          name: "Docker",
-          icon: <SiDocker className="text-xl text-blue-500" />,
-          url: "https://www.docker.com/",
-          description: "Plataforma de contenedorización para empaquetar, distribuir y ejecutar aplicaciones."
-        },
         {
           name: "HTML",
           icon: <SiHtml5 className="text-xl text-orange-600" />,
@@ -299,7 +293,19 @@ export function Skills() {
           description: "Framework CSS utility-first para construir diseños personalizados rápidamente."
         }
       ]
-    }
+    },
+    {
+      name: "Despliegue",
+      icon: <FaDocker className="text-xl" />,
+      technologies: [
+        {
+          name: "Docker",
+          icon: <SiDocker className="text-xl text-blue-500" />,
+          url: "https://www.docker.com/",
+          description: "Plataforma de contenedorización para empaquetar, distribuir y ejecutar aplicaciones."
+        }
+      ]
+    },
   ];
   return (
     <section id="skills" className="py-20 bg-slate-50">
