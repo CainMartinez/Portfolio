@@ -80,25 +80,25 @@ export function Skills() {
           name: "Spring Boot",
           icon: <SiSpringboot className="text-xl text-green-600" />,
           url: "https://spring.io/projects/spring-boot",
-          description: "Framework para desarrollo de aplicaciones Java. Utilizado para crear microservicios y APIs REST."
+          description: "Framework para desarrollo de aplicaciones Java. Utilizado para crear microservicios y APIs REST. Lo he trabajado en QoRders para la parte del cliente."
         },
         {
           name: "Symfony",
           icon: <SiSymfony className="text-xl text-black" />,
           url: "https://symfony.com/",
-          description: "Framework PHP modular para construir aplicaciones web robustas. Excelente para proyectos empresariales."
+          description: "Framework PHP modular para construir aplicaciones web robustas. Excelente para proyectos empresariales. En EventEco con Symfony he desarrollado la parte de Organizador y durante las prácticas en Gestfy, toda la migración era con esta misma tecnología."
         },
         {
           name: "Laravel",
           icon: <FaLaravel className="text-xl text-red-600" />,
           url: "https://laravel.com/",
-          description: "Framework PHP elegante para desarrollo web rápido con sintaxis expresiva."
+          description: "Framework PHP elegante para desarrollo web rápido con sintaxis expresiva. Lo he implementado en la parte Manager de QoRders."
         },
         {
           name: "Node.js",
           icon: <FaNodeJs className="text-xl text-green-700" />,
           url: "https://nodejs.org/",
-          description: "Entorno de ejecución JavaScript del lado del servidor. Perfecto para aplicaciones en tiempo real."
+          description: "Entorno de ejecución JavaScript del lado del servidor. Perfecto para aplicaciones en tiempo real. He desarrollado con Node.js tanto en QoRders como en JobAtmosphere, en el segundo era el backend principal de la aplicación y en el primero se encarga de las notificaciones por email, WhatsApp y pagos con Stripe."
         }
       ]
     },
@@ -110,25 +110,25 @@ export function Skills() {
           name: "Vue",
           icon: <FaVuejs className="text-xl text-green-500" />,
           url: "https://vuejs.org/",
-          description: "Framework JavaScript progresivo para construir interfaces de usuario."
+          description: "Framework JavaScript progresivo para construir interfaces de usuario. Vue es el frontend principal de mi aplicación QoRders, desarrollado con JS."
         },
         {
           name: "React",
           icon: <FaReact className="text-xl text-blue-400" />,
           url: "https://reactjs.org/",
-          description: "Biblioteca JavaScript para crear interfaces de usuario basadas en componentes."
+          description: "Biblioteca JavaScript para crear interfaces de usuario basadas en componentes. En QoRders la función era listar las ONG y permitir donaciones, implementado con JS."
         },
         {
           name: "Angular",
           icon: <FaAngular className="text-xl text-red-600" />,
           url: "https://angular.io/",
-          description: "Plataforma para construir aplicaciones web móviles y de escritorio."
+          description: "Plataforma para construir aplicaciones web móviles y de escritorio. Es el primer frontend TS que usé, se encarga de darle interfaz a la aplicación JobAtmosphere."
         },
         {
           name: "TypeScript",
           icon: <SiTypescript className="text-xl text-blue-600" />,
           url: "https://www.typescriptlang.org/",
-          description: "Superconjunto de JavaScript con tipos estáticos."
+          description: "Superconjunto de JavaScript con tipos estáticos. Lo he implementado en Express, Next.js y Angular."
         }
       ]
     },
@@ -140,7 +140,7 @@ export function Skills() {
           name: "Odoo",
           icon: <SiOdoo className="text-xl text-purple-600" />,
           url: "https://www.odoo.com/",
-          description: "Suite completa de aplicaciones empresariales de código abierto que abarca CRM, eCommerce, contabilidad y más."
+          description: "Suite completa de aplicaciones empresariales de código abierto que abarca CRM, eCommerce, contabilidad y más. Estube de prácticas trabajando con Odoo durante el año 2023, he desarrollado un pequeño módulo en Odoo 14."
         }
       ]
     },
@@ -152,25 +152,25 @@ export function Skills() {
           name: "PostgreSQL",
           icon: <SiPostgresql className="text-xl text-blue-800" />,
           url: "https://www.postgresql.org/",
-          description: "Sistema de base de datos relacional de código abierto muy potente y extensible."
+          description: "Sistema de base de datos relacional de código abierto muy potente y extensible. Gestor principal de EventEco y Odoo."
         },
         {
           name: "MySQL",
           icon: <SiMysql className="text-xl text-blue-500" />,
           url: "https://www.mysql.com/",
-          description: "Sistema de gestión de bases de datos relacional muy popular y de código abierto."
+          description: "Sistema de gestión de bases de datos relacional muy popular y de código abierto. Es el gestor que más domino, utilizado en QoRders y LivingMobility."
         },
         {
           name: "MongoDB",
           icon: <SiMongodb className="text-xl text-green-600" />,
           url: "https://www.mongodb.com/",
-          description: "Base de datos NoSQL orientada a documentos, escalable y flexible."
+          description: "Base de datos NoSQL orientada a documentos, escalable y flexible. Lo implementé en el proyecto de JobAtmosphere como gestor principal."
         },
         {
           name: "Redis",
           icon: <SiRedis className="text-xl text-red-500" />,
           url: "https://redis.io/",
-          description: "Almacén de estructura de datos en memoria utilizado como base de datos, caché y agente de mensajes."
+          description: "Almacén de estructura de datos en memoria utilizado como base de datos, caché y agente de mensajes. Tanto en QoRders como en EventEco se implementó como almacenamiento caché del auth, durante las prácticas en Gestfy lo utilizé para guardar la sesión de usuario, de esta forma se puede navegar por distintos servidores con la misma sesión."
         }
       ]
     },
@@ -182,7 +182,7 @@ export function Skills() {
           name: "MVC",
           icon: <FaCode className="text-xl text-gray-700" />,
           url: "https://developer.mozilla.org/es/docs/Glossary/MVC",
-          description: "Patrón de diseño usado para separar la lógica de la aplicación de la interfaz de usuario."
+          description: "Patrón de diseño usado para separar la lógica de la aplicación de la interfaz de usuario. Lo implementé en los primeros proyectos como en LivingMovility."
         },
         {
           name: "Clean Code",
@@ -194,7 +194,7 @@ export function Skills() {
           name: "DDD",
           icon: <FaLayerGroup className="text-xl text-orange-600" />,
           url: "https://martinfowler.com/bliki/DomainDrivenDesign.html",
-          description: "Enfoque de desarrollo de software que conecta la implementación con un modelo de dominio evolutivo."
+          description: "Enfoque de desarrollo de software que conecta la implementación con un modelo de dominio evolutivo. "
         },
         {
           name: "CQRS",
