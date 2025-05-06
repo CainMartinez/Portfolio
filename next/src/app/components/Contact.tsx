@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
-import { FaPhone, FaEnvelope, FaMapMarkerAlt, FaGlobe, FaGithub, FaLinkedin, FaExclamationTriangle, FaCommentDots } from 'react-icons/fa';
+import { FaPhone, FaEnvelope, FaMapMarkerAlt, FaGlobe, FaGithub, FaLinkedin, FaCheckCircle, FaExclamationCircle, FaCommentDots, FaPaperPlane } from 'react-icons/fa';
 
 export function Contact() {
   const [formData, setFormData] = useState({
@@ -9,6 +9,10 @@ export function Contact() {
     email: '',
     message: ''
   });
+  
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+  const [errorMessage, setErrorMessage] = useState('');
   
   const mapRef = useRef(null);
   
@@ -34,6 +38,18 @@ export function Contact() {
       // Cleanup si es necesario
     };
   }, []);
+  
+  // Reset status after 5 seconds
+  useEffect(() => {
+    if (submitStatus !== 'idle') {
+      const timer = setTimeout(() => {
+        setSubmitStatus('idle');
+        setErrorMessage('');
+      }, 5000);
+      
+      return () => clearTimeout(timer);
+    }
+  }, [submitStatus]);
   
   const initializeMap = () => {
     if (!mapRef.current) return;
@@ -62,9 +78,42 @@ export function Contact() {
     });
   };
   
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Formulario deshabilitado, no se procesa la solicitud
+    
+    // Validación básica
+    if (!formData.name || !formData.email || !formData.message) {
+      setSubmitStatus('error');
+      setErrorMessage('Por favor, completa todos los campos');
+      return;
+    }
+    
+    setIsSubmitting(true);
+    setSubmitStatus('idle');
+    
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData)
+      });
+      
+      const data = await response.json();
+      
+      if (response.ok) {
+        setSubmitStatus('success');
+        setFormData({ name: '', email: '', message: '' });
+      } else {
+        setSubmitStatus('error');
+        setErrorMessage(data.error || 'Error al enviar el mensaje');
+      }
+    } catch (error) {
+      console.error('Error:', error);
+      setSubmitStatus('error');
+      setErrorMessage('Error de conexión. Inténtalo más tarde.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
   
   return (
@@ -190,21 +239,27 @@ export function Contact() {
         <div className="max-w-3xl mx-auto px-4">
           <h3 className="text-2xl font-bold mb-3 text-center text-gray-800">Envíame un mensaje</h3>
           <p className="text-gray-600 text-center mb-8">
-            Completa el formulario y te responderé a la brevedad posible.
+            Rellene los datos y responderé los más rápido posible. El correo electrónico que se me facilite será con el que me ponga en contacto.
           </p>
           
-          {/* Formulario con aviso */}
+          {/* Formulario sin aviso de deshabilitado */}
           <div className="bg-white rounded-lg shadow-xl p-8 relative border border-gray-100">
-            {/* Aviso de formulario deshabilitado */}
-            <div className="absolute inset-0 bg-gray-100/70 backdrop-blur-[2px] z-10 flex flex-col items-center justify-center rounded-lg">
-              <div className="bg-amber-50 border border-amber-300 text-amber-800 p-6 rounded-lg shadow-lg max-w-md mx-auto text-center">
-                <FaExclamationTriangle className="text-amber-500 text-3xl mx-auto mb-3" />
-                <h3 className="font-bold text-lg mb-2">Formulario temporalmente deshabilitado</h3>
-                <p>Hasta que se habiliten los emails en la web, por favor, utiliza los datos de contacto proporcionados o conéctate conmigo a través de redes sociales.</p>
+            {/* Notificación de estado */}
+            {submitStatus === 'success' && (
+              <div className="mb-6 p-4 bg-green-50 border border-green-200 text-green-800 rounded-md flex items-center">
+                <FaCheckCircle className="text-green-500 mr-3 flex-shrink-0" />
+                <p>¡Mensaje enviado con éxito! Te responderé lo antes posible.</p>
               </div>
-            </div>
+            )}
             
-            <form onSubmit={handleSubmit} className="opacity-60">
+            {submitStatus === 'error' && (
+              <div className="mb-6 p-4 bg-red-50 border border-red-200 text-red-800 rounded-md flex items-center">
+                <FaExclamationCircle className="text-red-500 mr-3 flex-shrink-0" />
+                <p>{errorMessage || 'Ocurrió un error al enviar el mensaje. Inténtalo de nuevo.'}</p>
+              </div>
+            )}
+            
+            <form onSubmit={handleSubmit}>
               <div className="grid md:grid-cols-2 gap-6 mb-6">
                 <div>
                   <label htmlFor="name" className="block text-gray-700 font-medium mb-2">
@@ -216,9 +271,9 @@ export function Contact() {
                     name="name"
                     value={formData.name}
                     onChange={handleChange}
-                    className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 bg-gray-100"
+                    className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                     placeholder="Tu nombre completo"
-                    disabled
+                    required
                   />
                 </div>
                 
@@ -232,9 +287,9 @@ export function Contact() {
                     name="email"
                     value={formData.email}
                     onChange={handleChange}
-                    className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 bg-gray-100"
+                    className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                     placeholder="tu@email.com"
-                    disabled
+                    required
                   />
                 </div>
               </div>
@@ -249,19 +304,39 @@ export function Contact() {
                   value={formData.message}
                   onChange={handleChange}
                   rows={5}
-                  className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 bg-gray-100"
+                  className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                   placeholder="¿En qué puedo ayudarte?"
-                  disabled
+                  required
                 ></textarea>
               </div>
               
               <button 
                 type="submit"
-                disabled={true}
-                className="w-full bg-gray-400 text-white font-medium py-3 px-6 rounded-md cursor-not-allowed opacity-70 shadow-sm"
+                disabled={isSubmitting}
+                className={`w-full flex items-center justify-center text-white font-medium py-3 px-6 rounded-md shadow-md transition-colors ${
+                  isSubmitting 
+                    ? 'bg-blue-400 cursor-wait' 
+                    : 'bg-blue-600 hover:bg-blue-700'
+                }`}
               >
-                Enviar mensaje
+                {isSubmitting ? (
+                  <>
+                    <svg className="animate-spin -ml-1 mr-2 h-4 w-4 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                      <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                    </svg>
+                    Enviando...
+                  </>
+                ) : (
+                  <>
+                    <FaPaperPlane className="mr-2" /> Enviar mensaje
+                  </>
+                )}
               </button>
+              
+              <p className="text-xs text-gray-500 mt-4 text-center">
+                Al enviar este formulario, aceptas que usaré tu información solo para responder a tu mensaje.
+              </p>
             </form>
           </div>
         </div>
