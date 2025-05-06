@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { FaBriefcase, FaCalendarAlt, FaChevronDown, FaChevronUp } from 'react-icons/fa';
+import { FaBriefcase, FaCalendarAlt, FaMapMarkerAlt, FaChevronDown, FaChevronUp } from 'react-icons/fa';
 
 interface ExperienceItem {
   company: string;
@@ -12,6 +12,7 @@ interface ExperienceItem {
 }
 
 export function Experience() {
+  // Estados y funciones sin cambios
   const [expandedItems, setExpandedItems] = useState<{[key: number]: boolean}>({
     0: true,
     1: false,
@@ -24,7 +25,6 @@ export function Experience() {
       [index]: !prev[index]
     }));
   };
-
   const experiences: ExperienceItem[] = [
     {
       company: "Gestfy Soluciones, S.L.",
@@ -61,42 +61,86 @@ export function Experience() {
   ];
 
   return (
-    <section id="experience" className="py-20 bg-slate-50">
+    <section id="experience" className="py-20 bg-slate-800 text-white">
       <div className="max-w-4xl mx-auto px-4">
-        <h2 className="text-3xl font-bold mb-2 text-center">Experiencia Profesional</h2>
-        <div className="w-20 h-1 bg-blue-500 mx-auto mb-12"></div>
+        {/* Encabezado con estilo mejorado */}
+        <div className="mb-12 text-center">
+          <div className="inline-block bg-blue-500/20 text-blue-300 px-3 py-1 rounded-full mb-3">
+            <div className="flex items-center gap-1.5">
+              <FaBriefcase className="text-sm" />
+              <span className="text-sm font-medium">Mi trayectoria</span>
+            </div>
+          </div>
+          
+          <h2 className="text-3xl font-bold mb-3">
+            <span className="text-blue-400">&lt;</span>
+            Experiencia
+            <span className="text-blue-400">/&gt;</span>
+          </h2>
+          
+          <div className="w-20 h-1 bg-blue-400 mx-auto mb-6"></div>
+          
+          <p className="text-gray-300 max-w-2xl mx-auto text-lg">
+            Mi recorrido profesional, donde he aplicado mis conocimientos y adquirido valiosa experiencia.
+          </p>
+        </div>
         
         <div className="space-y-6">
           {experiences.map((exp, index) => (
-            <div key={index} className="bg-white rounded-lg shadow-md overflow-hidden transition-all duration-300">
+            <div 
+              key={index} 
+              className={`bg-slate-700 rounded-lg border-l-4 ${
+                index === 0 ? "border-blue-400" : 
+                index === 1 ? "border-green-400" : "border-purple-400"
+              } overflow-hidden transition-all duration-300 hover:shadow-lg hover:shadow-blue-900/20`}
+            >
               <div 
                 className="p-6 cursor-pointer flex justify-between items-start"
                 onClick={() => toggleExpand(index)}
               >
-                <div>
-                  <div className="flex items-center gap-2 mb-2">
-                    <FaBriefcase className="text-blue-500" />
+                <div className="space-y-3">
+                  <div className="flex items-center gap-2">
+                    <div className={`p-2 rounded-full ${
+                      index === 0 ? "bg-blue-400/20 text-blue-400" : 
+                      index === 1 ? "bg-green-400/20 text-green-400" : "bg-purple-400/20 text-purple-400"
+                    }`}>
+                      <FaBriefcase />
+                    </div>
                     <h3 className="text-xl font-bold">{exp.company}</h3>
                   </div>
-                  <h4 className="text-lg font-semibold text-gray-700">{exp.position}</h4>
-                  <div className="flex items-center mt-2 text-gray-600">
-                    <FaCalendarAlt className="mr-2" />
-                    <span>{exp.period}</span>
-                    <span className="mx-2">•</span>
-                    <span>{exp.location}</span>
+                  
+                  <h4 className="text-lg font-semibold text-blue-300 ml-9">{exp.position}</h4>
+                  
+                  <div className="flex flex-wrap items-center ml-9 text-gray-300 gap-3">
+                    <div className="flex items-center gap-1">
+                      <FaCalendarAlt className="text-gray-400" />
+                      <span>{exp.period}</span>
+                    </div>
+                    <div className="flex items-center gap-1">
+                      <FaMapMarkerAlt className="text-gray-400" />
+                      <span>{exp.location}</span>
+                    </div>
                   </div>
                 </div>
-                <div>
-                  {expandedItems[index] ? <FaChevronUp /> : <FaChevronDown />}
+                
+                <div className={`p-2 rounded-full ${expandedItems[index] ? "bg-blue-400/20" : "bg-gray-700"}`}>
+                  {expandedItems[index] ? <FaChevronUp className="text-blue-400" /> : <FaChevronDown className="text-gray-400" />}
                 </div>
               </div>
               
               {expandedItems[index] && (
-                <div className="px-6 pb-6 border-t border-gray-100 pt-4">
-                  <h5 className="font-semibold mb-2">Responsabilidades:</h5>
-                  <ul className="list-disc pl-5 space-y-1">
+                <div className="px-6 pb-6 border-t border-slate-600 pt-4">
+                  <div className="flex items-center gap-2 mb-3">
+                    <span className="text-blue-400">&lt;</span>
+                    <h5 className="font-semibold">Responsabilidades</h5>
+                    <span className="text-blue-400">/&gt;</span>
+                  </div>
+                  <ul className="space-y-2 ml-4">
                     {exp.responsibilities.map((resp, i) => (
-                      <li key={i}>{resp}</li>
+                      <li key={i} className="flex items-start gap-2">
+                        <span className="text-blue-400 mt-1">•</span>
+                        <span className="text-gray-200">{resp}</span>
+                      </li>
                     ))}
                   </ul>
                 </div>
