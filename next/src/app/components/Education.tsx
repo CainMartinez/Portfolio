@@ -10,14 +10,38 @@ export function Education() {
       institution: "IES L'Estació - Ontinyent (Valencia)",
       period: "09/2023 - 06/2025",
       skills: ["JavaScript", "PHP", "SQL", "React", "Laravel"]
+      period: "09/2023 - 06/2025",
+      skills: ["JavaScript", "PHP", "SQL", "React", "Laravel"]
     },
     {
       degree: "Grado Medio de Sistemas Microinformáticos y Redes (SMR)",
       institution: "Colegio San Roque - Alcoy (Alicante)",
       period: "9/2021 - 6/2023",
       skills: ["Redes", "Sistemas", "Hardware", "Windows", "Linux"]
+      period: "9/2021 - 6/2023",
+      skills: ["Redes", "Sistemas", "Hardware", "Windows", "Linux"]
     }
   ];
+
+  const terminalRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    // Simulación de terminal escribiendo automáticamente
+    const terminal = terminalRef.current;
+    if (terminal) {
+      terminal.innerHTML = '';
+      const text = '> Cargando historial académico...\n> Accediendo a datos educativos...\n> Información encontrada.';
+      let i = 0;
+      const typeWriter = () => {
+        if (i < text.length) {
+          terminal.innerHTML += text.charAt(i);
+          i++;
+          setTimeout(typeWriter, Math.random() * 50 + 10);
+        }
+      };
+      typeWriter();
+    }
+  }, []);
 
   const terminalRef = useRef<HTMLDivElement>(null);
 
@@ -143,3 +167,4 @@ export function Education() {
     </section>
   );
 }
+
