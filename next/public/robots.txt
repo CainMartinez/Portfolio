@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://cain-dev.es
+
+# Sitemaps
+Sitemap: https://cain-dev.es/sitemap.xml
