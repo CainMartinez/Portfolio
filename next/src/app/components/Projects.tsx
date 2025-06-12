@@ -13,10 +13,10 @@ interface Project {
 // Array de imágenes de proyectos para cada repositorio
 const projectImages = [
   '/qorders.png',
+  '/odoo.png',
   '/eventeco.png',
   '/job.png',
   '/living.png',
-  '/odoo.png',
   '/portfolio.png',
 ];
 
