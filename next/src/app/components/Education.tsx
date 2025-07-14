@@ -116,7 +116,7 @@ export function Education() {
                 
                 <div className="mt-2 text-gray-400 pl-6 flex items-center gap-1 text-sm">
                   <div className="h-2 w-2 rounded-full bg-green-500 animate-pulse"></div>
-                  <span className="text-purple-400">{`// ${index === 0 ? "En curso" : "Completado"}`}</span>
+                  <span className="text-purple-400">{`// ${index === 0 ? "Completado" : "Completado"}`}</span>
                 </div>
               </div>
             ))}
