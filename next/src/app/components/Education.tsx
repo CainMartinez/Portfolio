@@ -129,7 +129,7 @@ export function Education() {
             
             {/* Terminal Prompt at End */}
             <div className="flex items-center mt-3">
-              <span className="text-green-400">user@portfolio:~$</span>
+              <span className="text-green-400">cain@portfolio:~$</span>
               <div className="ml-2 h-4 w-2 bg-green-400 animate-pulse"></div>
             </div>
           </div>
