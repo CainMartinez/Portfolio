@@ -33,13 +33,13 @@ export function Experience() {
     {
       company: "Gestfy Soluciones, S.L.",
       position: "Prácticas CFGS DAW",
-      period: "2/2025 - 05/2025",
+      period: "02/2025 - 05/2025",
       location: "Ontinyent (Valencia)",
       responsibilities: [
-        "Migrar código Legacy de Symfony a una arquitectura hexagonal.",
-        "Monitorizar métricas con Prometheus y Grafana.",
-        "Centralizar logs para un entorno distribuido con ELK y Kafka, siguiendo su trazabilidad.",
-        "Montar todo el entorno dentro de un VPS con Docker."
+        "Migración de código Legacy Symfony a arquitectura hexagonal.",
+        "Monitorización con Prometheus y Grafana.",
+        "Centralización de logs con ELK y Kafka.",
+        "Montaje de entorno en VPS con Docker."
       ]
     },
     {
@@ -55,11 +55,10 @@ export function Experience() {
     {
       company: "Soluntec Proyectos y Soluciones TIC, S.L.",
       position: "Prácticas CFGM SMR",
-      period: "3/2023 - 06/2023",
+      period: "03/2023 - 06/2023",
       location: "Ontinyent (Valencia)",
       responsibilities: [
-        "Desarrollo de módulos custom de Odoo:",
-        "Modelos con Python y vistas con XML."
+        "Desarrollo de módulos custom en Odoo (Python + XML)."
       ]
     }
   ];

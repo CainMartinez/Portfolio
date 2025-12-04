@@ -6,6 +6,12 @@ import { useEffect, useRef } from 'react';
 export function Education() {
   const education = [
     {
+      degree: "Grado Superior de Desarrollo de Aplicaciones Multiplataforma (DAM)",
+      institution: "IES L'Estació - Ontinyent (Valencia)",
+      period: "09/2025 - 06/2026",
+      skills: ["C#", "React Native", "Flutter", "Python", "iOS", "Android", "Desktop"]
+    },
+    {
       degree: "Grado Superior de Desarrollo de Aplicaciones Web (DAW)",
       institution: "IES L'Estació - Ontinyent (Valencia)",
       period: "09/2023 - 06/2025",
@@ -14,7 +20,7 @@ export function Education() {
     {
       degree: "Grado Medio de Sistemas Microinformáticos y Redes (SMR)",
       institution: "Colegio San Roque - Alcoy (Alicante)",
-      period: "9/2021 - 6/2023",
+      period: "09/2021 - 06/2023",
       skills: ["Redes", "Sistemas", "Hardware", "Windows", "Linux"]
     }
   ];
@@ -115,8 +121,8 @@ export function Education() {
                 </div>
                 
                 <div className="mt-2 text-gray-400 pl-6 flex items-center gap-1 text-sm">
-                  <div className="h-2 w-2 rounded-full bg-green-500 animate-pulse"></div>
-                  <span className="text-purple-400">{`// ${index === 0 ? "Completado" : "Completado"}`}</span>
+                  <div className={`h-2 w-2 rounded-full ${index === 0 ? 'bg-green-500 animate-pulse' : 'bg-green-500'}`}></div>
+                  <span className="text-purple-400">{`// ${index === 0 ? "En curso" : "Completado"}`}</span>
                 </div>
               </div>
             ))}
@@ -135,7 +141,7 @@ export function Education() {
               <span>Formación actualizada</span>
             </div>
             <div>
-              <span>2 titulaciones • {education[0].skills.length + education[1].skills.length} habilidades</span>
+              <span>3 titulaciones • {education[0].skills.length + education[1].skills.length + education[2].skills.length} habilidades</span>
             </div>
           </div>
         </div>

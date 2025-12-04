@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import { 
   FaServer, 
   FaDesktop, 
+  FaMobileAlt,
   FaCode, 
   FaSitemap, 
   FaLayerGroup, 
@@ -35,7 +36,9 @@ import {
   SiTailwindcss,
   SiBootstrap,
   SiHtml5,
-  SiCss3
+  SiCss3,
+  SiFlutter,
+  SiReact
 } from 'react-icons/si';
 
 interface Technology {
@@ -134,6 +137,24 @@ export function Skills() {
       ]
     },
     {
+      name: "Mobile",
+      icon: <FaMobileAlt className="text-xl" />,
+      technologies: [
+        {
+          name: "Flutter",
+          icon: <SiFlutter className="text-xl text-blue-400" />,
+          url: "https://flutter.dev/",
+          description: "Framework de Google para crear aplicaciones nativas multiplataforma desde una única base de código. Permite desarrollar apps para iOS, Android, web y desktop con Dart."
+        },
+        {
+          name: "React Native",
+          icon: <SiReact className="text-xl text-blue-500" />,
+          url: "https://reactnative.dev/",
+          description: "Framework de Facebook para desarrollar aplicaciones móviles nativas usando React. Comparte código entre iOS y Android mientras mantiene el rendimiento nativo."
+        }
+      ]
+    },
+    {
       name: "ERP",
       icon: <FaCogs className="text-xl" />,
       technologies: [
@@ -186,7 +207,7 @@ export function Skills() {
           description: "Model View Controller: Patrón de diseño usado para separar la lógica de la aplicación de la interfaz de usuario. Lo implementé en los primeros proyectos como en LivingMovility."
         },
         {
-          name: "Clean Code",
+          name: "Clean Architecture",
           icon: <FaCode className="text-xl text-blue-700" />,
           url: "https://github.com/ryanmcdermott/clean-code-javascript",
           description: "Principios de desarrollo para escribir código mantenible, legible y robusto."
